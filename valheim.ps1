@@ -39,9 +39,25 @@ function installBepInExMod{
 }
 $configDeathPenalty = @"
 [Death]
-SkillLossPercent = 0 #default is 5
-MercyEffectDuration = 600 #default is 600
-SafetyEffectDuration = 50 #default is 50
+## Settings file was created by plugin Death Penalty v1.0.3.0
+## Plugin GUID: dev.crystal.deathpenalty
+
+[Death]
+
+## The percent loss suffered to all skills when the player dies. Range 0-100. 0 disables skill loss. 50 reduces all skills by half. 100 resets all skills to 0. Resulting loss is effectively rounded by the game up to the next full level. Game default is 5.
+# Setting type: Single
+# Default value: 5
+SkillLossPercent = 0
+
+## The duration, in seconds, of the "No Skill Loss" status effect that is granted on death which prevents further loss of skills via subsequent deaths. Game default is 600.
+# Setting type: Single
+# Default value: 600
+MercyEffectDuration = 600
+
+## The duration, in seconds, of the "Corpse Run" status effect that is granted upon looting a tombstone which boosts regen and other stats. Game default is 50.
+# Setting type: Single
+# Default value: 50
+SafetyEffectDuration = 50
 "@
 
 $gamePath = getSteamGameLocation -gameName "Valheim"
