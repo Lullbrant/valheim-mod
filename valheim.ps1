@@ -33,37 +33,14 @@ function installBepInExMod{
     $dest = $env:HOMEPATH+"\downloads\1234"
     Invoke-WebRequest $url -OutFile "$dest.zip"
     Expand-Archive -path "$dest.zip" -DestinationPath $dest
-    Get-ChildItem $dest -Filter "*.dll" | Copy-Item -Destination $gamePath"\BepInEx\plugins\$_"
+    Get-ChildItem $dest -Filter "*.dll" -Recurse | Copy-Item -Destination $gamePath"\BepInEx\plugins\$_"
     Remove-Item $dest -Recurse
     Remove-Item $dest".zip"
 }
-$configDeathPenalty = @"
-[Death]
-## Settings file was created by plugin Death Penalty v1.0.3.0
-## Plugin GUID: dev.crystal.deathpenalty
-
-[Death]
-
-## The percent loss suffered to all skills when the player dies. Range 0-100. 0 disables skill loss. 50 reduces all skills by half. 100 resets all skills to 0. Resulting loss is effectively rounded by the game up to the next full level. Game default is 5.
-# Setting type: Single
-# Default value: 5
-SkillLossPercent = 0
-
-## The duration, in seconds, of the "No Skill Loss" status effect that is granted on death which prevents further loss of skills via subsequent deaths. Game default is 600.
-# Setting type: Single
-# Default value: 600
-MercyEffectDuration = 600
-
-## The duration, in seconds, of the "Corpse Run" status effect that is granted upon looting a tombstone which boosts regen and other stats. Game default is 50.
-# Setting type: Single
-# Default value: 50
-SafetyEffectDuration = 50
-"@
 
 $gamePath = getSteamGameLocation -gameName "Valheim"
 uninstallAllMods -gamePath $gamePath
 installBepInExBase -gamePath $gamePath
 installBepInExMod -gamePath $gamePath -url "https://valheim.thunderstore.io/package/download/nexus2thunderstore/FogDisabler/0.1.0/"
 installBepInExMod -gamePath $gamePath -url "https://github.com/mtnewton/valheim-mods/releases/download/3/mtnewton-ItemStacks-1.2.0.zip"
-installBepInExMod -gamePath $gamePath -url "https://valheim.thunderstore.io/package/download/Crystal/DeathPenalty/1.0.3/"
-Set-Content -Path $gamePath"\BepInEx\config\dev.crystal.deathpenalty.cfg" -Value $configDeathPenalty
+installBepInExMod -gamePath $gamePath -url "https://github.com/Lullbrant/valheim-mod/raw/main/No%20Death%20Penalty-118-1-0-0-1614205064.zip"
