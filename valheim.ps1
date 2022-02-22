@@ -37,10 +37,22 @@ function installBepInExMod{
     Remove-Item $dest -Recurse
     Remove-Item $dest".zip"
 }
+$aedenthornDeathTweaksConfig = @"
+## Settings file was created by plugin Death Tweaks v0.8.1
+## Plugin GUID: aedenthorn.DeathTweaks
+[General]
+Enabled = true
+[Skills]
+ReduceSkills = false
+[Toggles]
+KeepFoodLevels = true
+"@
 
 $gamePath = getSteamGameLocation -gameName "Valheim"
 uninstallAllMods -gamePath $gamePath
 installBepInExBase -gamePath $gamePath
 installBepInExMod -gamePath $gamePath -url "https://valheim.thunderstore.io/package/download/nexus2thunderstore/FogDisabler/0.1.0/"
 installBepInExMod -gamePath $gamePath -url "https://github.com/mtnewton/valheim-mods/releases/download/3/mtnewton-ItemStacks-1.2.0.zip"
-installBepInExMod -gamePath $gamePath -url "https://github.com/Lullbrant/valheim-mod/raw/main/No%20Death%20Penalty-118-1-0-0-1614205064.zip"
+installBepInExMod -gamePath $gamePath -url "https://valheim.thunderstore.io/package/download/CanisDirus/DeathTweaks/0.8.1/"
+installBepInExMod -gamePath $gamePath -url "https://valheim.thunderstore.io/package/download/TJzilla/BepInEx_ConfigurationManager/16.1.2/"
+Set-Content -Path $gamePath"\BepInEx\config\aedenthorn.DeathTweaks.cfg" -Value $aedenthornDeathTweaksConfig
