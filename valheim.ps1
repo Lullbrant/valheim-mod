@@ -63,14 +63,14 @@ KeepFoodLevels = true
 $gamePath = getSteamGameLocation -gameName "Valheim"
 uninstallAllMods -gamePath $gamePath
 
-#installMod -gamePath $gamePath -url "https://valheim.thunderstore.io/package/download/denikson/BepInExPack_Valheim/5.4.1900/" -installType "folder"
-#installMod -gamePath $gamePath -url "https://valheim.thunderstore.io/package/download/nexus2thunderstore/FogDisabler/0.1.0/"
-#installMod -gamePath $gamePath -url "https://github.com/mtnewton/valheim-mods/releases/download/3/mtnewton-ItemStacks-1.2.0.zip"
-#installMod -gamePath $gamePath -url "https://valheim.thunderstore.io/package/download/CanisDirus/DeathTweaks/0.8.1/"
-#installMod -gamePath $gamePath -url "https://valheim.thunderstore.io/package/download/TJzilla/BepInEx_ConfigurationManager/16.1.2/"
+installMod -gamePath $gamePath -url "https://valheim.thunderstore.io/package/download/denikson/BepInExPack_Valheim/5.4.1900/" -installType "folder"
+installMod -gamePath $gamePath -url "https://valheim.thunderstore.io/package/download/nexus2thunderstore/FogDisabler/0.1.0/"
+installMod -gamePath $gamePath -url "https://github.com/mtnewton/valheim-mods/releases/download/3/mtnewton-ItemStacks-1.2.0.zip"
+installMod -gamePath $gamePath -url "https://valheim.thunderstore.io/package/download/CanisDirus/DeathTweaks/0.8.1/"
+installMod -gamePath $gamePath -url "https://valheim.thunderstore.io/package/download/TJzilla/BepInEx_ConfigurationManager/16.1.2/"
 #installMod -gamePath $gamePath -url "https://valheim.thunderstore.io/package/download/MSchmoecker/PressurePlate/0.6.2/"
 #installMod -gamePath $gamePath -url "https://valheim.thunderstore.io/package/download/ValheimModding/HookGenPatcher/0.0.3/" -installType "folder" -subfolder "BepInEx"
 #installMod -gamePath $gamePath -url "https://valheim.thunderstore.io/package/download/ValheimModding/Jotunn/2.5.1/"
-#installMod -gamePath $gamePath -url "https://github.com/MofoMojo/ValheimMods/raw/master/MMWishboneTweak/bin/Release/MofoMojo.MMWishboneTweak.1.2.zip"
+installMod -gamePath $gamePath -url "https://github.com/MofoMojo/ValheimMods/raw/master/MMWishboneTweak/bin/Release/MofoMojo.MMWishboneTweak.1.2.zip"
 
 Set-Content -Path $gamePath"\BepInEx\config\aedenthorn.DeathTweaks.cfg" -Value $aedenthornDeathTweaksConfig
